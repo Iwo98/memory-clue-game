@@ -4,16 +4,29 @@ import { useState, useCallback } from "react";
 interface Circle {
   id: number;
   number: number;
+  hint: string;
   position: { top: string; left: string };
   isRevealed: boolean;
 }
 
 export default function Home() {
-  const sequence = [3, 5, 1, 9, 2, 8, 4, 7, 6];
+  const sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const hints: Record<number, string> = {
+    1: "8|5",
+    2: "5|5",
+    3: "4|4",
+    4: "9|2",
+    5: "3|1",
+    6: "1|8",
+    7: "7|6",
+    8: "2|3",
+    9: "6|1",
+  };
   const [circles, setCircles] = useState<Circle[]>(() => {
     return [...Array(9)].map((_, i) => ({
       id: i + 1,
       number: i + 1,
+      hint: hints[i + 1],
       position: getPosition(i),
       isRevealed: i + 1 === sequence[0], // Reveal first number in sequence (3)
     }));
@@ -42,6 +55,7 @@ export default function Home() {
       [...Array(9)].map((_, i) => ({
         id: i + 1,
         number: i + 1,
+        hint: hints[i + 1],
         position: getPosition(i),
         isRevealed: i + 1 === sequence[0], // Reveal first number in sequence (3)
       }))
@@ -85,7 +99,7 @@ export default function Home() {
               }
             `}
           >
-            {circle.isRevealed && !hasError ? circle.number : "?"}
+            {circle.isRevealed && !hasError ? circle.hint : "?"}
           </button>
         ))}
 
