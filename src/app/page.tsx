@@ -117,7 +117,7 @@ export default function Home() {
 
         {currentIndex + 1 === sequence.length && (
           <>
-            <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" />
+            <div className="fixed inset-0 bg-black/20" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-white/90 backdrop-blur-md p-8 rounded-xl shadow-2xl border border-green-200 z-50 w-[75%] max-w-lg">
               <div className="mb-6">
                 <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-teal-500 text-transparent bg-clip-text mb-3">
